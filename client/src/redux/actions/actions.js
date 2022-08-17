@@ -5,20 +5,21 @@ import axios from "axios";
 
 const URL = "http://localhost:3001";
 
+
 export const getAllDogs = () => dispatch => {
-    return fetch(`/dogs`)
+    return fetch(`${URL}/dogs`)
         .then(respuesta => respuesta.json())
         .then(json => {return dispatch({type: GET_ALL_DOGS, payload: json})})
 };
 
 export const getDogByName = (name) => dispatch => {
-    return fetch(`/dogs?name=${name}`)
+    return fetch(`${URL}/dogs?name=${name}`)
         .then(respuesta => respuesta.json())
         .then(json => {return dispatch({type: GET_DOG_BY_NAME, payload: json})})
     };
 
 export const getAllTempers = () => async dispatch => {
-    const {data} = await axios.get(`$/temperaments`);
+    const {data} = await axios.get(`${URL}/temperaments`);
     return dispatch({type: GET_ALL_TEMPERS, payload: data});
 };
 
@@ -52,7 +53,7 @@ export const orderDogs = (orden) => {
 
 export const setDog =  (dog) => async dispatch => {
    
-    let dogPost = await axios.post(`/dogs`, dog);
+    let dogPost = await axios.post(`${URL}/dogs`, dog);
     return dispatch({
         type: SET_DOG,
         payload: dogPost
@@ -60,7 +61,7 @@ export const setDog =  (dog) => async dispatch => {
 }
 
 export const getDogById = (id) => async dispatch => {
-    const {data} = await axios.get(`$/dogs/${id}`);
+    const {data} = await axios.get(`${URL}/dogs/${id}`);
     return dispatch({
         type: GET_DOG_BY_ID,
         payload: data

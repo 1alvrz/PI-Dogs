@@ -21,16 +21,16 @@ export default function SearchBar({tempers, resetPagina}){
         e.preventDefault();
         dispatch(getDogByTemper(e.target.value));
         resetPagina(1);
-        setInput({temperament:e.target.value, raza:"All Breeds", orden:"A-Z"})
+        setInput({temperament:e.target.value})
     }
-
+   // {temperament:e.target.value, raza:"All Breeds", orden:"A-Z"}
     function filtroRaza(e){
         if(e.target.value === "All Breeds") dispatch(getAllDogs());
         if(e.target.value === "Created Breeds") dispatch(getDogByDb());
         if(e.target.value === "API Breeds") dispatch(getDogByApi());
-        setInput({temperament:"Select temperament", raza:e.target.value, orden:"A-Z"})
+        setInput({raza:e.target.value})
     }
-
+   // {temperament:"Select temperament", raza:e.target.value, orden:"A-Z"}
     function orden(e){
         dispatch(orderDogs(e.target.value));
         setInput({...input, orden:e.target.value})

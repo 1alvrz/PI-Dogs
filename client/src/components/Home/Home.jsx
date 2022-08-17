@@ -6,6 +6,7 @@ import CardContainer from "../CardContainer/CardContainer";
 import SearchBar from "../SearchBar/SearchBar";
 import Paginado from "../Paginado/Paginado";
 import NavBar from "../NavBar/NavBar";
+
 export default function Home(){
     const dispatch = useDispatch();
     const dogs = useSelector((state) => state.dogs);
